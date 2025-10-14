@@ -1,18 +1,12 @@
-def find_ways(total, coins, index=0, current=None):
-    if current is None:
-        current = []
-    if total == 0:
-        print(current)
-        return
-    if total < 0 or index >= len(coins):
-        return
 
-    # Include current coin
-    find_ways(total - coins[index], coins, index, current + [coins[index]])
+def coin_prob(thisdict,target):
+    total = 0
 
-    # Exclude current coin and move to next
-    find_ways(total, coins, index + 1, current)
+    for key,value in thisdict.items():
+        updated_value = target//key
+        thisdict[key] = updated_value
+    return(thisdict)
 
-
-coins = [1, 2, 5, 10]
-find_ways(10, coins)
+thisdict = {10: 0, 5: 0 ,2:0,1: 0}
+target = 10
+print(coin_prob(thisdict,target))
